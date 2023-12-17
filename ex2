@@ -1,0 +1,41 @@
+#x=10 si y=13
+
+# Importing necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Reading the CSV file into a Pandas DataFrame
+df = pd.read_csv('data.csv')
+
+# Plotting all columns in the DataFrame
+plt.figure(figsize=(10, 10))
+for column in ['Durata', 'Puls', 'MaxPuls', 'Calorii']:
+    plt.plot(df.index, df[column], label=column, marker='x')
+
+# Adding labels and legend to the plot
+plt.title('All Values')
+plt.legend()
+plt.show()
+
+# Plotting the first 10 values of selected columns
+plt.figure(figsize=(10, 10))
+for column in ['Durata', 'Puls']:
+    plt.plot(df.index[:10], df[column][:10], label=column, marker='x')
+
+# Adding labels and legend to the plot
+plt.title('First 10 Values')
+plt.legend()
+plt.show()
+
+# Extracting the last 13 rows of selected columns
+ult = df[['Durata', 'Puls']].tail(13)
+
+# Plotting the last 13 values of selected columns
+plt.figure(figsize=(10, 10))
+for column in ['Durata', 'Puls']:
+    plt.plot(ult.index, ult[column], label=column, marker='x')
+
+# Adding labels and legend to the plot
+plt.title('Last 13 Values')
+plt.legend()
+plt.show()
